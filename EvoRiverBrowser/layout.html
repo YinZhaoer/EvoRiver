@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Layout Demo</title>
+	<!-- 注意加载顺序，d3和jquery先加载 -->
+	<script type="text/javascript" src="js/d3.js"></script>	
+	<script type="text/javascript" src="js/jquery-3.0.0.js"></script>		
+	<script type="text/javascript" src="js/layoutdata.js"></script>
+</head>
+<body>
+<script>
+
+var Path=new Array;
+var Part=new Array;
+var svgwidth=30000;
+var svgheight=10000;
+var padding = { left:100, right:50, top:50, bottom:50 };
+var svg=d3.select("body")
+		  .append("svg")
+		  .attr("width",svgwidth)
+		  .attr("height",svgheight);
+		  // alert(dataset.length);
+// var line=svg.append("line")
+//    .attr("x1",padding.left)
+//    .attr("x2",padding.left+Ini_dataset[0].length*80-padding.right)
+//    .attr("y1",baisline)
+//    .attr("y2",baisline)
+//    .attr("stroke","red")
+//    .attr("stroke-width","5px");
+
+
+
+
+
+//分片画图 count指代topic的编号
+// for(var count=0;count<Ordered_data.length;count++){
+// 	for(var j=0;j<Ordered_data[count].length-1;j++){
+// 		var color="green";
+// 		var Part=new Array;
+// 		Part[0]=Better_ordered_data[count][j];
+// 	    Part[1]=Better_ordered_data[count][j+1];
+// 		if(Part[0][0]<0&&Part[1][0]<0) color="orange";
+// 			var areaPath=d3.svg.area()
+// 		   			.x(function(d,i) {return padding.left+j*80+i*80;})
+// 		   			.y0(function(d,i) {if(d<0){return baisline+gap-d[0]*40+d[1]*adjacent_dis;} return baisline-gap+d[0]*40+d[1]*adjacent_dis;})				
+// 		  		    .y1(function(d,i) {if(d<0){return baisline+gap+d[0]*40+d[1]*adjacent_dis;} return baisline-gap-d[0]*40+d[1]*adjacent_dis;})
+// 		   			.interpolate("bundle")
+// 		   			.tension(1);
+// 	Path[count]=svg.append("path")
+//    	  				.attr("d",areaPath(Part))
+//       				.attr("stroke","black")
+//       				.attr("stroke-width","2px")
+//       				.attr("fill",color);
+// 	Path[count].id=count;
+// 	}
+//   }
+
+for(var j=0;j<10;j++){
+	// alert(topicyy[j].length)
+			var areaPath=d3.svg.area()
+		   			.x(function(d,i) {return padding.left+i*600;})
+		   			.y0(function(d,i) {return 2500-d+width[j][i]/2;
+		   			})			
+		  		    .y1(function(d,i) {return 2500-d-width[j][i]/2;
+		  		    }) 
+		   		    .interpolate("monotone")//The way of interpolation affects the last pattern
+		   		    //.interpolate("basic")
+	Path[j]=svg.append("path")
+   	  				.attr("d",areaPath(coordinates[j]))
+      				.attr("stroke","black")
+      				.attr("stroke-width","1px")
+      				.attr("fill","black");
+	Path[j].id=j;
+}
+
+</script>
+</body>
+</html>
