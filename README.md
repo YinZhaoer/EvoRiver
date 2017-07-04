@@ -25,4 +25,7 @@ copy the coordinates and width to layoutdata.js
  ![Image text](https://raw.githubusercontent.com/YinZhaoer/imgFolder/master/EvoRiver/js.png)
 
 ### open layout.html
-  
+
+Paper References
+----------------
+Sun, Guodao, et al. "EvoRiver: Visual analysis of topic coopetition on social media." IEEE Transactions on Visualization and Computer Graphics 20.12 (2014): 1753-1762.
